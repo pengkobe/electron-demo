@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>大屏展示</title>
+  <script type="text/javascript" src="./jquery.js"></script>
+  <script>if (typeof module === 'object') { window.jQuery = window.$ = module.exports; };</script>
+  <style>
+    body {
+      padding: 0px !important;
+      margin: 0px !important;
+      width: 3840px !important;
+      height: 2160px !important;
+    }
+
+    .iframe-block {
+      position: relative;
+      padding: 0px;
+      margin: 0px;
+    }
+
+    iframe {
+      width: 1920px;
+      height: 1080px;
+      border: none;
+    }
+
+    .click-me,
+    .to-second-page {
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      z-index: 10;
+      font-size: 12px;
+      background: #ccc;
+      width: 50px;
+      height: 30px;
+    }
+
+    .second-page {
+      display: none;
+    }
+
+    .full-screen-style,
+    .first-page {
+      top: 0px;
+      left: 0px;
+      padding: 0px;
+      margin: 0px;
+      position: fixed !important;
+      width: 1920px;
+      height: 1080px;
+      zoom: 200%;
+      z-index: 999 !important;
+    }
+
+    .exit-fullscreen {
+      display: none;
+      position: absolute;
+      left: 10px;
+      z-index: 10;
+      background: red;
+      width: 75px;
+      height: 30px;
+      z-index: 9999 !important;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="first-page">
+    <div class="to-second-page">切换分屏</div>
+    <iframe width="1920px" height="1080px" src="http://www.eegrid.com"></iframe>
+  </div>
+
+  <div class="exit-fullscreen">退出全屏</div>
+  <div style="display:flex;flex-direction: column;width:3840px;padding:0px" class="second-page">
+    <div style="display:flex;" width="3840px">
+      <div width="1920px" height="1080px" class="iframe-block">
+        <div class="click-me">全屏</div>
+        <iframe width="1920px" height="1080px" src="http://www.baidu.com">
+        </iframe>
+      </div>
+
+      <div width="1920px" height="1080px" class="iframe-block">
+        <div class="click-me">全屏</div>
+        <iframe src="http://www.163.com" width="1920px" height="1080px" style="flex:1"></iframe>
+      </div>
+    </div>
+
+    <div style="display:flex;" width="3840px">
+      <div width="1920px" height="1080px" class="iframe-block">
+        <div class="click-me">全屏</div>
+        <iframe src="http://www.qq.com" width="50%" width="1920px" height="1080px" style="flex:1"></iframe>
+      </div>
+      <div width="1920px" height="1080px" class="iframe-block">
+        <div class="click-me">全屏</div>
+        <iframe src="http://www.alibaba.com" width="1920px" height="1080px"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    $(".click-me").on('click', function () {
+      var me = this;
+      setTimeout(function () {
+        $("iframe").removeClass("full-screen-style");
+        $(me).parent().find("iframe").addClass("full-screen-style");
+        $(".exit-fullscreen").show();
+      }, 10)
+    });
+    $(".exit-fullscreen").on('click', function () {
+      $("iframe").removeClass("full-screen-style");
+      $(".exit-fullscreen").hide();
+    });
+
+    $(".to-second-page").on('click', function () {
+      $(".first-page").hide();
+      $(".second-page").show();
+    });
+
+    // You can also require other files to run in this process
+    require('./renderer.js')
+  </script>
+
+</body>
+
+</html>
