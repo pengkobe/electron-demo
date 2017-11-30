@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <title>大屏展示</title>
   <script type="text/javascript" src="./jquery.js"></script>
+  <script type="text/javascript" src="./fastclick.js"></script>
   <script>
     if (typeof module === 'object') {
       window.jQuery = window.$ = module.exports;
@@ -19,18 +20,18 @@
       overflow: hidden;
     }
 
-    .iframe-block {
-      position: relative;
-      padding: 0px;
-      margin: 0px;
-    }
-
     iframe {
       width: 1920px;
       height: 1080px;
       border: none;
     }
 
+    .iframe-block {
+      position: relative;
+      padding: 0px;
+      margin: 0px;
+    }
+   
     .click-me,
     .to-second-page {
       position: absolute;
@@ -41,6 +42,18 @@
       background: #ccc;
       width: 50px;
       height: 30px;
+    }
+
+    .back-to-indexpage {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-125px);
+      top: 0px;
+      z-index: 10;
+      font-size: 12px;
+      background: #ccc;
+      width: 250px;
+      height: 40px;
     }
 
     .second-page {
@@ -72,6 +85,13 @@
       height: 30px;
       z-index: 9999 !important;
     }
+
+    .click-me,
+    .to-second-page,
+    .exit-fullscreen,
+    .back-to-indexpage {
+      opacity: 0;
+    }
   </style>
 </head>
 
@@ -86,7 +106,8 @@
     <div style="display:flex;" width="3840px">
       <div width="1920px" height="1080px" class="iframe-block">
         <div class="click-me">全屏</div>
-        <iframe width="1920px" height="1080px" src="http://www.baidu.com">
+        <div class="back-to-indexpage">全屏</div>
+        <iframe width="1920px" height="1080px" src="http://www.nxtone.net">
         </iframe>
       </div>
 
@@ -110,7 +131,7 @@
 
   <script>
 
-    $(".click-me").on('click', function () {
+    $(".click-me").on('dblclick', function () {
       var me = this;
       setTimeout(function () {
         $("iframe").removeClass("full-screen-style");
@@ -119,14 +140,19 @@
       }, 10)
     });
 
-    $(".exit-fullscreen").on('click', function () {
+    $(".exit-fullscreen").on('dblclick', function () {
       $("iframe").removeClass("full-screen-style");
       $(".exit-fullscreen").hide();
     });
 
-    $(".to-second-page").on('click', function () {
+    $(".to-second-page").on('dblclick', function () {
       $(".first-page").hide();
       $(".second-page").show();
+    });
+
+    $(".back-to-indexpage").on('dblclick', function () {
+      $(".first-page").show();
+      $(".second-page").hide();
     });
 
     // You can also require other files to run in this process

@@ -20,7 +20,7 @@ function createWindow() {
     fullscreenable: true,
     frame: false,
     backgroundColor: '#403F4D',
-    icon: path.join(__dirname, 'assets/png/logo.png')
+    icon: path.join(__dirname, 'assets/png/logo.png'),
   })
 
   // and load the index.html of the app.
