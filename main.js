@@ -4,6 +4,9 @@ const app = electron.app
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow
 
+const dialog = electron.dialog
+const globalShortcut = electron.globalShortcut
+
 const path = require('path')
 const url = require('url')
 
@@ -14,8 +17,8 @@ let mainWindow
 function createWindow() {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width:3840,
-    height:2160,
+    width: 3840,
+    height: 2160,
     autoHideMenuBar: true,
     fullscreenable: true,
     frame: false,
@@ -54,6 +57,16 @@ app.on('window-all-closed', function () {
   if (process.platform !== 'darwin') {
     app.quit()
   }
+})
+
+app.on('ready', function () {
+  /** 按 F5 刷新 */
+  globalShortcut.register('F5', function () {
+    let win = BrowserWindow.getFocusedWindow();
+    if (!win) return;
+    win.reload();
+    console.log("refresh");
+  });
 })
 
 app.on('activate', function () {

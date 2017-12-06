@@ -16,15 +16,15 @@
     body {
       padding: 0px !important;
       margin: 0px !important;
-      width: 960px !important;
-      height: 540px !important;
+      width: 3840px !important;
+      height: 2160px !important;
       overflow: hidden;
       position: relative;
     }
 
     iframe {
-      width: 480px;
-      height: 270px;
+      width: 1920px;
+      height: 1080px;
       border: none;
     }
 
@@ -81,8 +81,8 @@
       padding: 0px;
       margin: 0px;
       position: fixed !important;
-      width: 480px;
-      height: 270px;
+      width: 1920px;
+      height: 1080px;
       transform: scale(2);
       transform-origin: 0% 0%;
       z-index: 999 !important;
@@ -150,37 +150,37 @@
   <div class="first-page">
     <div class="to-second-page">切换分屏</div>
     <div class="to-second-page2">set</div>
-    <iframe id="indexPageUrl_f" width="480px" height="270px" src="https://www.yipeng.com"></iframe>
+    <iframe id="indexPageUrl_f" width="1920px" height="1080px" src="https://www.yipeng.com"></iframe>
   </div>
 
   <div class="exit-fullscreen">退出全屏</div>
-  <div style="display:flex;flex-direction: column;width:960px;padding:0px" class="second-page">
-    <div style="display:flex;" width="960px">
+  <div style="display:flex;flex-direction: column;width:3840px;padding:0px" class="second-page">
+    <div style="display:flex;" width="3840px">
       <!-- 第一幕 -->
-      <div width="480px" height="270px" class="iframe-block">
+      <div width="1920px" height="1080px" class="iframe-block">
         <div class="click-me">全屏</div>
         <div class="back-to-indexpage">全屏</div>
-        <iframe id="leftUpUrl_f" width="480px" height="270px" src="http://task.yipeng.com">
+        <iframe id="leftUpUrl_f" width="1920px" height="1080px" src="http://task.yipeng.com">
         </iframe>
       </div>
       <!-- 第二幕 -->
-      <div width="480px" height="270px" class="iframe-block">
+      <div width="1920px" height="1080px" class="iframe-block">
         <div class="click-me">全屏</div>
-        <iframe id="rightUpUrl_f" src="http://countdown.yipeng.com" width="480px" height="270px" style="flex:1"></iframe>
+        <iframe id="rightUpUrl_f" src="http://countdown.yipeng.com" width="1920px" height="1080px" style="flex:1"></iframe>
       </div>
     </div>
 
-    <div style="display:flex;" width="960px">
+    <div style="display:flex;" width="3840px">
       <!-- 第三幕 -->
-      <div width="480px" height="270px" class="iframe-block">
+      <div width="1920px" height="1080px" class="iframe-block">
         <div class="click-me">全屏</div>
-        <iframe id="leftDownUrl_f" src="https://www.yipeng.com/blog" width="50%" width="480px" height="270px"
+        <iframe id="leftDownUrl_f" src="https://www.yipeng.com/blog" width="50%" width="1920px" height="1080px"
           style="flex:1"></iframe>
       </div>
       <!-- 第四幕 -->
-      <div width="480px" height="270px" class="iframe-block">
+      <div width="1920px" height="1080px" class="iframe-block">
         <div class="click-me">全屏</div>
-        <iframe id="rightDownUrl_f" src="https://www.crawler.com/blog" width="480px" height="270px"></iframe>
+        <iframe id="rightDownUrl_f" src="https://www.crawler.com/blog" width="1920px" height="1080px"></iframe>
       </div>
     </div>
   </div>
